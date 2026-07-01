@@ -2,100 +2,307 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Untitled Cake Studios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0f0f0f;
-            --surface: #1a1a1a;
-            --text-main: #ffffff;
-            --text-sub: #b0b0b0;
-            --accent: #ff6b6b;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Quicksand', sans-serif;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        header { padding: 60px 20px; text-align: center; }
-        header h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 5px; color: var(--accent); }
-        header p { color: var(--text-sub); font-size: 1.1rem; }
-
-        .nav-bar { display: flex; justify-content: center; gap: 10px; padding: 20px; flex-wrap: wrap; }
-        .nav-btn { 
-            background: var(--surface); border: 2px solid #333; color: var(--text-main);
-            padding: 12px 24px; border-radius: 50px; font-weight: 600; cursor: pointer;
-            transition: all 0.3s ease; font-family: 'Quicksand', sans-serif;
-        }
-        .nav-btn:hover { border-color: var(--accent); background: #222; }
-
-        .main-container { max-width: 800px; margin: 20px auto; padding: 20px; }
-        .section { display: none; }
-        .section.active { display: block; }
-
-        .card { background: var(--surface); padding: 30px; border-radius: 20px; border: 1px solid #333; }
-        .card h2 { font-family: 'Fredoka One', cursive; color: var(--accent); margin-top: 0; }
-        .collab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
-        .collab-item { background: #252525; padding: 15px; border-radius: 10px; text-align: center; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled Cake Studios - Game Development Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">Cake Studios</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="show('home'); return false;">Home</a></li>
+                <li><a href="#" onclick="show('about'); return false;">About</a></li>
+                <li><a href="#" onclick="show('games'); return false;">Games</a></li>
+                <li><a href="#" onclick="show('team'); return false;">Team</a></li>
+                <li><a href="#" onclick="show('contact'); return false;">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<header>
-    <h1>Untitled Cake Studios</h1>
-    <p>Creating fun, imaginative, and safe experiences for everyone.</p>
-</header>
+    <!-- Home Section -->
+    <div id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Untitled Cake Studios</h1>
+                <p class="hero-subtitle">Creating Fun, Imaginative & Safe Gaming Experiences</p>
+                <button class="cta-btn" onclick="show('games'); return false;">Explore Our Games</button>
+            </div>
+            <div class="hero-background">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+        </div>
 
-<div class="nav-bar">
-    <button class="nav-btn" onclick="show('home')">Home</button>
-    <button class="nav-btn" onclick="show('about')">About</button>
-    <button class="nav-btn" onclick="show('family')">Family & Safety</button>
-    <button class="nav-btn" onclick="show('collab')">Collaborators</button>
-</div>
-
-<div class="main-container">
-    <div id="home" class="section active card">
-        <h2>Welcome to the Studio</h2>
-        <p>Welcome! Untitled Cake Studios is a place where creativity comes first. Whether you are a kid who loves playing games or an adult who appreciates clean, thoughtful design, you belong here. We build things that are simple, fun, and built to last.</p>
+        <!-- Features Section -->
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Creative Design</h3>
+                <p>Imaginative worlds built with passion and attention to detail</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Smooth Gameplay</h3>
+                <p>Optimized performance for the best gaming experience</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍👩‐👧‐👦</div>
+                <h3>Family Friendly</h3>
+                <p>Safe, inclusive games for all ages and abilities</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3>Quality First</h3>
+                <p>Every project crafted with excellence and care</p>
+            </div>
+        </section>
     </div>
 
-    <div id="about" class="section card">
-        <h2>Our Goal</h2>
-        <p>Our studio was founded on the idea that games should be fun above all else. We focus on smooth movement, clear goals, and making sure that every project we work on feels special. We don't just make games—we build worlds for you to explore.</p>
-    </div>
-
-    <div id="family" class="section card">
-        <h2>Family & Safety</h2>
-        <p>We take safety seriously, but we keep it simple. Our focus is on creating environments that are welcoming to all ages.</p>
-        <ul>
-            <li><strong>Safe Play:</strong> All games are designed to be friendly and secure.</li>
-            <li><strong>Pure Fun:</strong> No complicated menus, no hidden tricks—just great gameplay.</li>
-            <li><strong>Inclusive Design:</strong> We build for everyone, ensuring that everyone can join in the fun.</li>
-        </ul>
-    </div>
-
-    <div id="collab" class="section card">
-        <h2>Our Collaborators</h2>
-        <p>The studio wouldn't be the same without our dedicated team of testers and friends who help us make everything better.</p>
-        <div class="collab-grid">
-            <div class="collab-item">Malaki</div>
-            <div class="collab-item">Dilan</div>
-            <div class="collab-item">Miley</div>
-            <div class="collab-item">Riley</div>
+    <!-- About Section -->
+    <div id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Untitled Cake Studios</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Our Mission</h3>
+                    <p>We believe that games should be fun, accessible, and engaging for everyone. Our studio was founded on the principle that great game design comes from understanding what makes play truly enjoyable.</p>
+                    
+                    <h3>Our Values</h3>
+                    <ul class="values-list">
+                        <li><strong>Creativity:</strong> We push boundaries and explore new ideas</li>
+                        <li><strong>Quality:</strong> Every detail matters in our games</li>
+                        <li><strong>Inclusivity:</strong> Games for everyone, regardless of background</li>
+                        <li><strong>Safety:</strong> Creating secure, welcoming environments</li>
+                        <li><strong>Fun:</strong> Above all else, we prioritize enjoyment</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Games in Development</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Core Team Members</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Family Friendly</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    function show(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-    }
-</script>
+    <!-- Games Section -->
+    <div id="games" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">🎮</div>
+                    <h3>Game Title 1</h3>
+                    <p class="game-genre">Puzzle Adventure</p>
+                    <p class="game-description">An exciting puzzle adventure that challenges your mind and imagination.</p>
+                    <div class="game-tags">
+                        <span class="tag">Indie</span>
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Family-Friendly</span>
+                    </div>
+                    <button class="play-btn">Learn More</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">🚀</div>
+                    <h3>Game Title 2</h3>
+                    <p class="game-genre">Action Platformer</p>
+                    <p class="game-description">Jump, explore, and conquer in this colorful platforming adventure.</p>
+                    <div class="game-tags">
+                        <span class="tag">Action</span>
+                        <span class="tag">Platformer</span>
+                        <span class="tag">Coming Soon</span>
+                    </div>
+                    <button class="play-btn">Learn More</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">🌈</div>
+                    <h3>Game Title 3</h3>
+                    <p class="game-genre">Exploration Game</p>
+                    <p class="game-description">Discover hidden worlds and unlock secrets in this immersive experience.</p>
+                    <div class="game-tags">
+                        <span class="tag">Exploration</span>
+                        <span class="tag">Indie</span>
+                        <span class="tag">Narrative</span>
+                    </div>
+                    <button class="play-btn">Learn More</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">⭐</div>
+                    <h3>Game Title 4</h3>
+                    <p class="game-genre">Casual Puzzle</p>
+                    <p class="game-description">Relax and enjoy mind-bending puzzles with beautiful visuals.</p>
+                    <div class="game-tags">
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Casual</span>
+                        <span class="tag">Relaxing</span>
+                    </div>
+                    <button class="play-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div id="team" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">M</div>
+                    <h3>Malaki</h3>
+                    <p class="role">Game Designer</p>
+                    <p class="bio">Passionate about creating engaging game mechanics and memorable experiences.</p>
+                    <div class="social-links">
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">D</div>
+                    <h3>Dilan</h3>
+                    <p class="role">Lead Developer</p>
+                    <p class="bio">Experienced programmer dedicated to optimizing gameplay and performance.</p>
+                    <div class="social-links">
+                        <a href="#" title="GitHub">⚙</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">Mi</div>
+                    <h3>Miley</h3>
+                    <p class="role">Artist & UI Designer</p>
+                    <p class="bio">Creative visual designer bringing our games to life with stunning art.</p>
+                    <div class="social-links">
+                        <a href="#" title="Portfolio">🎨</a>
+                        <a href="#" title="Instagram">📷</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">R</div>
+                    <h3>Riley</h3>
+                    <p class="role">Quality Assurance</p>
+                    <p class="bio">Ensures every game meets our high standards for quality and fun.</p>
+                    <div class="social-links">
+                        <a href="#" title="Discord">🎮</a>
+                        <a href="#" title="Twitch">📺</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family & Safety Section -->
+            <section class="safety-section">
+                <h2 class="section-subtitle">Family & Safety Commitment</h2>
+                <div class="safety-grid">
+                    <div class="safety-card">
+                        <div class="safety-icon">🛡️</div>
+                        <h4>Safe Play Environment</h4>
+                        <p>All games are designed with security and age-appropriateness in mind.</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-icon">🎯</div>
+                        <h4>Clear Goals</h4>
+                        <p>Simple, understandable objectives that don't confuse or overwhelm.</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-icon">✨</div>
+                        <h4>Pure Fun</h4>
+                        <p>No hidden tricks, no complicated menus—just great gameplay.</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-icon">🌍</div>
+                        <h4>Inclusive Design</h4>
+                        <p>Built for everyone, ensuring all players can enjoy the experience.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div>
+                            <p class="info-label">Email</p>
+                            <p><a href="mailto:hello@untitledcakestudios.com">hello@untitledcakestudios.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🐦</span>
+                        <div>
+                            <p class="info-label">Social Media</p>
+                            <p><a href="#">@UntitledCakeStudios</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">💬</span>
+                        <div>
+                            <p class="info-label">Discord</p>
+                            <p><a href="#">Join our Community</a></p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Untitled Cake Studios. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" onclick="show('about'); return false;">Privacy</a>
+                <a href="#" onclick="show('about'); return false;">Terms</a>
+                <a href="#" onclick="show('contact'); return false;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-                                                                                                                                                                                                                                                                    </html>
-                                                                                                                                                                                                                                                                    
+</html>
