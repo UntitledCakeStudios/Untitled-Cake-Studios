@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled C🎂ke Studios</title>
+    <style>
+        body { background: linear-gradient(135deg, #FF00FF, #0000FF, #800080); background-attachment: fixed; font-family: 'Verdana', sans-serif; padding: 0; margin: 0; color: #000; overflow: hidden; }
+        .top-bar-container { position: fixed; top: 0; width: 100%; background: #D4D0C8; border-bottom: 3px outset #FFF; padding: 5px; z-index: 100; }
+        .window { border: 3px outset #FFF; background-color: #D4D0C8; padding: 2px; max-width: 1100px; margin: 70px auto 10px auto; box-shadow: 10px 10px 30px #000; }
+        .title-bar { background: linear-gradient(to right, #FF00FF, #00FFFF); color: white; padding: 4px 10px; font-weight: bold; font-size: 14px; display: flex; justify-content: space-between; }
+        .brand-header { background: #EFEFEF; padding: 25px; text-align: center; border-bottom: 2px inset #FFF; }
+        .brand-header h1 { margin: 0; font-size: 40px; font-family: 'Arial Black', sans-serif; color: #FF4500; text-shadow: 2px 2px #FFFF00; }
+        .tab-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; padding: 5px; }
+        .nav-btn { background: #7FFF00; border: 2px outset #FFF; padding: 8px 12px; cursor: pointer; font-weight: bold; font-size: 10px; }
+        .frame { display: none; padding: 25px; background: #FFF; border: 2px inset #FFF; margin: 5px; min-height: 350px; overflow-y: auto; }
+        .frame.active { display: block; }
+        .stats { background: #000; color: #0F0; padding: 10px; font-family: monospace; font-size: 14px; margin-top: 15px; border: 2px inset #FFF; }
+        .taskbar { position: fixed; bottom: 0; width: 100%; height: 35px; background: #D4D0C8; border-top: 3px outset #FFF; display: flex; align-items: center; padding: 0 10px; justify-content: space-between; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="top-bar-container">
+    <div class="tab-container">
+        <button class="nav-btn" onclick="show('home')">HOME</button>
+        <button class="nav-btn" onclick="show('projects')">PROJECTS</button>
+        <button class="nav-btn" onclick="show('family')">FAMILY HUB</button>
+        <button class="nav-btn" onclick="show('news')">NEWS</button>
+    </div>
+</div>
+<div class="window">
+    <div class="title-bar"><span>Untitled_C🎂ke_Studios_PUBLISHED.exe</span></div>
+    <div class="brand-header"><h1>Untitled C🎂ke Studios</h1></div>
+    <div id="home" class="frame active">
+        <h2>Welcome!</h2>
+        <p>I'm Finn, a 9-year-old dev making games for the world. Welcome to my studio!</p>
+        <div class="stats">>> LIVE_STATS: 24 ACTIVE | 14,082 VISITS</div>
+    </div>
+    <div id="projects" class="frame"><h2>Games</h2><ul><li>Deliver Packages</li><li>Super Bit World!</li><li>V4 Movement</li></ul></div>
+    <div id="family" class="frame"><h2>Family Hub</h2><p>Safe, fun, and inclusive for everyone!</p></div>
+    <div id="news" class="frame"><h2>News</h2><p>v33131 is now LIVE!</p></div>
+</div>
+<div class="taskbar"><div>Finnithy_Master_Suite | 2026</div><div>PUBLISHED_BUILD</div></div>
+<script>
+    function show(id) {
+        document.querySelectorAll('.frame').forEach(f => f.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+</script>
+</body>
+</html>
