@@ -1,274 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled Cake Studios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0f0f0f;
-            --surface: #1a1a1a;
-            --text-main: #ffffff;
-            --text-sub: #b0b0b0;
-            --accent: #ff6b6b;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-brown: #5A3825;
+      --tab-red: #FF4D4D;
+      --ui-orange: #FCD6A5;
+      --dm-bg: #2C2420;
+      --dm-text: #FAD9B5;
+      --dm-window: #3E322A;
+    }
+    
+    body { 
+      background-image: url('https://static.vecteezy.com/system/resources/thumbnails/000/263/176/small/cartoon-desert-banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Fredoka One', cursive; 
+      margin: 0; padding: 20px; 
+      color: var(--text-brown); 
+      transition: all 0.3s ease; 
+    }
+    
+    body.dark-mode { filter: brightness(0.8); }
+    body.dark-mode .main-window { background-color: var(--dm-window); color: var(--dm-text); border-color: #5A3825; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .branding { text-align: center; margin-bottom: 20px; }
+    .branding h1 { font-size: 4rem; color: #FFF; text-shadow: 4px 4px var(--text-brown); margin: 0; letter-spacing: 2px; }
+    
+    .nav-bar { background: var(--ui-orange); border: 5px solid var(--text-brown); border-radius: 20px; padding: 10px; margin: 0 auto 20px auto; max-width: 900px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .tab-btn { background: #FFFDF9; border: 4px solid var(--text-brown); border-radius: 14px; padding: 8px 16px; cursor: pointer; font-family: 'Fredoka One', cursive; font-size: 1rem; color: var(--text-brown); }
+    .tab-btn.active, .tab-btn:hover { border-color: var(--tab-red); color: var(--tab-red); }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Quicksand', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    .main-window { background: white; border: 5px solid var(--text-brown); border-radius: 24px; padding: 40px; max-width: 900px; margin: 0 auto; min-height: 500px; }
+    .pane { display: none; }
+    .pane.active { display: block; }
 
-        header {
-            padding: 60px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(255, 107, 107, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
-            border-bottom: 2px solid var(--accent);
-        }
-
-        header h1 {
-            font-family: 'Fredoka One', cursive;
-            font-size: 3rem;
-            margin-bottom: 5px;
-            color: var(--accent);
-        }
-
-        header p {
-            color: var(--text-sub);
-            font-size: 1.1rem;
-        }
-
-        .nav-bar {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-            flex-wrap: wrap;
-            background-color: var(--surface);
-            border-bottom: 1px solid var(--accent);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-btn {
-            background: var(--surface);
-            border: 2px solid var(--accent);
-            color: var(--text-main);
-            padding: 12px 24px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        .nav-btn:hover {
-            background: var(--accent);
-            color: #000;
-        }
-
-        .nav-btn.active {
-            background: var(--accent);
-            color: #000;
-        }
-
-        .main-container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .card {
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 5px;
-            border: 1px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
-        }
-
-        .card h2 {
-            font-family: 'Fredoka One', cursive;
-            color: var(--accent);
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-
-        .card p {
-            color: var(--text-sub);
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
-        .card ul {
-            list-style: none;
-        }
-
-        .card li {
-            padding: 10px 0;
-            color: var(--text-sub);
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .card li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        .card li strong {
-            color: var(--text-main);
-        }
-
-        .collab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .collab-item {
-            background: #252525;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid var(--accent);
-            transition: all 0.3s ease;
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .collab-item:hover {
-            background: var(--accent);
-            color: #000;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid var(--accent);
-            margin-top: 40px;
-            color: var(--text-sub);
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .card {
-                padding: 20px;
-            }
-
-            .card h2 {
-                font-size: 1.5rem;
-            }
-
-            .collab-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+    .footer-board { background: var(--ui-orange); border: 5px solid var(--text-brown); border-radius: 20px; padding: 20px; max-width: 600px; margin: 40px auto; text-align: center; }
+    .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 2px solid #D4A373; font-size: 1.2rem; }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Untitled Cake Studios</h1>
-    <p>Creating fun, imaginative, and safe experiences for everyone.</p>
-</header>
+  <div class="branding">
+    <h1>UntitledC🎂keStudios</h1>
+  </div>
 
-<div class="nav-bar">
-    <button class="nav-btn active" onclick="show('home')">Home</button>
-    <button class="nav-btn" onclick="show('about')">About</button>
-    <button class="nav-btn" onclick="show('family')">Family & Safety</button>
-    <button class="nav-btn" onclick="show('collab')">Collaborators</button>
-</div>
+  <div class="nav-bar">
+    <button class="tab-btn active" onclick="switchTab(event, 'career')">My Career</button>
+    <button class="tab-btn" onclick="switchTab(event, 'history')">Our History</button>
+    <button class="tab-btn" onclick="switchTab(event, 'portfolio')">Portfolio</button>
+    <button class="tab-btn" onclick="switchTab(event, 'privacy')">Privacy Policy</button>
+    <button class="tab-btn" onclick="switchTab(event, 'terms')">Terms (ToS)</button>
+    <button class="tab-btn" onclick="switchTab(event, 'settings')">Settings</button>
+  </div>
 
-<div class="main-container">
-    <div id="home" class="section active card">
-        <h2>Welcome to the Studio</h2>
-        <p>Welcome! Untitled Cake Studios is a place where creativity comes first. Whether you are a kid who loves playing games or an adult who appreciates clean, thoughtful design, you belong here.</p>
-        <p>We believe that great experiences are built on fun, simplicity, and imagination. Every project we work on is designed with care and attention to detail.</p>
+  <div class="main-window">
+    <div id="career" class="pane active">
+      <h2>My GitHub Gaming Career</h2>
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <p style="flex: 2; min-width: 300px;">My journey in software development is defined by a deep-rooted passion for browser-based architecture. Rather than relying on massive game engines, I specialize in building custom, high-performance web frameworks from the ground up using core JavaScript, CSS, and HTML5. By hosting directly on GitHub, I ensure that my projects are not only accessible globally but also serve as open-source blueprints for others who want to learn how web games are structured. Every line of code I write is optimized to run smoothly on any device, ensuring that the barrier to entry for the end-user remains nonexistent.</p>
+        <img src="https://img.icons8.com/ios11/512/FFFFFF/github.png" alt="GitHub Logo" style="width: 120px; height: 120px; background-color: #5A3825; padding: 10px; border-radius: 20px;">
+      </div>
     </div>
-
-    <div id="about" class="section card">
-        <h2>Our Goal</h2>
-        <p>Our studio was founded on the idea that games should be fun above all else. We focus on smooth movement, clear goals, and making sure that every project we work on feels special.</p>
-        <p>We don't complicate things. We believe in:</p>
-        <ul>
-            <li><strong>Simplicity:</strong> Clear and straightforward gameplay</li>
-            <li><strong>Quality:</strong> Every detail matters</li>
-            <li><strong>Fun:</strong> Games should bring joy</li>
-            <li><strong>Community:</strong> Building together with our team</li>
-        </ul>
+    
+    <div id="history" class="pane">
+      <h2>Our History</h2>
+      <p>UntitledC🎂keStudios was born from the realization that modern gaming was becoming too bloated. We started our history in a small local workspace, experimenting with how minimal code could produce maximum interaction. We quickly realized that the GitHub ecosystem was the perfect laboratory for our work—it allowed us to push updates instantly, track our iteration process, and invite the community to peek under the hood of our development cycles.</p>
+      <p>Over the years, we have transitioned from creating basic logic puzzles to building sophisticated interactive engines. We have survived numerous framework shifts and browser updates, always keeping our core mission intact: creating games that are fast, fun, and entirely browser-native.</p>
     </div>
-
-    <div id="family" class="section card">
-        <h2>Family & Safety</h2>
-        <p>We take safety seriously, but we keep it simple. Our focus is on creating environments that are welcoming to all ages.</p>
-        <ul>
-            <li><strong>Safe Play:</strong> All games are designed to be friendly and secure.</li>
-            <li><strong>Pure Fun:</strong> No complicated menus, no hidden tricks—just great gameplay.</li>
-            <li><strong>Inclusive Design:</strong> We build for everyone, ensuring that everyone can join in the fun.</li>
-        </ul>
+    
+    <div id="portfolio" class="pane">
+      <h2>Portfolio Showcase</h2>
+      <p>Our portfolio is a collection of technical achievements that highlight our growth as a studio. We don't just build games; we build the systems that power them.</p>
+      <p>Key Projects Include:</p>
+      <ul>
+        <li><strong>The "CakeCore" Engine:</strong> A lightweight JavaScript utility library for handling sprite rendering, collision detection, and user input mapping.</li>
+        <li><strong>Procedural Landscapes:</strong> A set of algorithms designed to generate unique, infinite environments for our arcade-style titles, ensuring high replayability.</li>
+        <li><strong>Responsive UI Kits:</strong> We've developed a custom suite of CSS-based tools that allow our game menus to look identical on everything from a 4K desktop monitor to a tiny mobile device screen.</li>
+      </ul>
     </div>
-
-    <div id="collab" class="section card">
-        <h2>Our Collaborators</h2>
-        <p>The studio wouldn't be the same without our dedicated team of testers and friends who help us make everything better.</p>
-        <div class="collab-grid">
-            <div class="collab-item">Malaki</div>
-            <div class="collab-item">Dilan</div>
-            <div class="collab-item">Miley</div>
-            <div class="collab-item">Riley</div>
-        </div>
+    
+    <div id="privacy" class="pane">
+      <h2>Privacy Policy</h2>
+      <p>At UntitledC🎂keStudios, our privacy philosophy is simple: we cannot lose your data if we never collect it. We are proud to maintain a strict "Zero Data" policy across our entire digital infrastructure.</p>
+      <p>We do not utilize cookies, we do not require user logins, and we do not employ any third-party tracking software or behavioral analytic platforms. When you navigate to our games, you remain completely anonymous. We believe that the digital age should respect user anonymity, allowing you to enjoy high-quality entertainment without the persistent threat of data harvesting or intrusive advertising. Your session remains your own, and your privacy is preserved by our serverless, static hosting model.</p>
     </div>
-</div>
+    
+    <div id="terms" class="pane">
+      <h2>Terms of Service (ToS)</h2>
+      <p>By engaging with the UntitledC🎂keStudios network, you are entering into a community-based agreement regarding the use of our software and digital assets.</p>
+      <ol>
+        <li><strong>Open Access:</strong> All source code, logic, and assets produced by this studio are open-source and licensed under the MIT license. You have the right to fork, modify, and distribute our work.</li>
+        <li><strong>Contribution Integrity:</strong> If you choose to contribute to our repositories, we request that your code adheres to our established style guides to maintain project consistency.</li>
+        <li><strong>Prohibited Use:</strong> You may not, under any circumstances, take our proprietary builds, lock them behind paywalls, or attempt to misrepresent our open-source work as your own paid commercial product.</li>
+      </ol>
+    </div>
+    
+    <div id="settings" class="pane">
+      <h2>App Settings</h2>
+      <p>Adjust your local viewing preferences below. These settings are stored in your browser's local cache and will persist for the duration of your visit.</p>
+      <div class="setting-item"><span>Night Mode</span><input type="checkbox" onchange="document.body.classList.toggle('dark-mode', this.checked)"></div>
+    </div>
+  </div>
 
-<footer>
-    <p>&copy; 2024 Untitled Cake Studios. All rights reserved.</p>
-    <p>Creating fun, imaginative, and safe experiences for everyone.</p>
-</footer>
+  <div class="footer-board">
+    <p>© 2026 UntitledC🎂keStudios Game Creation Network. All code templates safely protected under global software rules.</p>
+  </div>
 
-<script>
-    function show(sectionId) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-        
-        document.getElementById(sectionId).classList.add('active');
-        event.target.classList.add('active');
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  <script>
+    function switchTab(evt, tabId) {
+      document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
     }
-</script>
-
+  </script>
 </body>
-    </html>
+                                    </html>
+                                    
