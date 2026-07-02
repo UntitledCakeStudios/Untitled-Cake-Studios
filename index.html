@@ -11,7 +11,7 @@
             --surface: #1a1a1a;
             --text-main: #ffffff;
             --text-sub: #b0b0b0;
-            --accent: #ff6b6b;
+            --accent: #cc3333;
         }
 
         * {
@@ -31,7 +31,7 @@
         header {
             padding: 60px 20px;
             text-align: center;
-            background: linear-gradient(180deg, rgba(255, 107, 107, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+            background: linear-gradient(180deg, rgba(204, 51, 51, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
             border-bottom: 2px solid var(--accent);
         }
 
@@ -105,7 +105,7 @@
         }
 
         .card:hover {
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
+            box-shadow: 0 0 20px rgba(204, 51, 51, 0.2);
         }
 
         .card h2 {
@@ -167,6 +167,36 @@
             color: #000;
         }
 
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #252525;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            box-shadow: 0 0 15px rgba(204, 51, 51, 0.15);
+        }
+
+        .info-box h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .info-box p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -195,6 +225,10 @@
             .collab-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -210,6 +244,7 @@
     <button class="nav-btn" onclick="show('about')">About</button>
     <button class="nav-btn" onclick="show('family')">Family & Safety</button>
     <button class="nav-btn" onclick="show('collab')">Collaborators</button>
+    <button class="nav-btn" onclick="show('contact')">Contact</button>
 </div>
 
 <div class="main-container">
@@ -249,6 +284,25 @@
             <div class="collab-item">Dilan</div>
             <div class="collab-item">Miley</div>
             <div class="collab-item">Riley</div>
+        </div>
+    </div>
+
+    <div id="contact" class="section card">
+        <h2>Get In Touch</h2>
+        <p>Have questions or want to learn more about Untitled Cake Studios? We'd love to hear from you.</p>
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>Email</h3>
+                <p>Reach out to our team with any inquiries or feedback.</p>
+            </div>
+            <div class="info-box">
+                <h3>About Us</h3>
+                <p>A passionate team dedicated to creating amazing experiences for all ages.</p>
+            </div>
+            <div class="info-box">
+                <h3>Our Mission</h3>
+                <p>Making games and experiences that bring joy, creativity, and connection.</p>
+            </div>
         </div>
     </div>
 </div>
